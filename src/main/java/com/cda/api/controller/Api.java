@@ -1,33 +1,21 @@
 package com.cda.api.controller;
 
-import com.cda.api.dto.*;
+import com.cda.api.dto.film.FilmDeleteDto;
+import com.cda.api.dto.film.FilmUploadDto;
+import com.cda.api.dto.utilisateur.UtilisateurCoDto;
+import com.cda.api.dto.utilisateur.UtilisateurDto;
 import com.cda.api.mapper.FilmMapper;
 import com.cda.api.mapper.UtilisateurMapper;
 import com.cda.api.model.Film;
 import com.cda.api.model.Utilisateur;
 import com.cda.api.service.IFilmService;
 import com.cda.api.service.IUtilisateurService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.imageio.ImageIO;
-import javax.validation.constraints.NotNull;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * WebService REST pour les opérations de l'application Admin
@@ -53,9 +41,6 @@ public class Api {
 
     @Autowired
     private FilmMapper filmMapper;
-
-    @Value("${images.path}")
-    private String imagesDir;
 
     @GetMapping("/home")
     public ResponseEntity<String> home() {
@@ -89,34 +74,6 @@ public class Api {
         return ResponseEntity.ok(utilisateurDto);
     }
 
-    @GetMapping("/allMovies")
-    public ResponseEntity<List<FilmDto>> allMovies() {
-        List<Film> allMovies = filmService.getAll();
-        List<FilmDto> allMoviesDto = new ArrayList<>();
-        if(allMovies != null) {
-            for(Film film: allMovies) {
-                film.setImgBytes(
-                    imageToByte(imagesDir + film.getImg())
-                );
-            }
-
-            allMoviesDto = allMovies.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
-        }
-        return ResponseEntity.ok(allMoviesDto);
-    }
-
-    private byte[] imageToByte(String imgPath) {
-        System.out.println(imgPath);
-        Path currentDir = Paths.get(".");
-        Path fullPath = currentDir.toAbsolutePath();
-        System.out.println(fullPath);
-        try {
-            byte [] imgBytes = Files.readAllBytes(Paths.get(imgPath));
-            return imgBytes;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     /*
     @PostMapping("/getAllMovies")

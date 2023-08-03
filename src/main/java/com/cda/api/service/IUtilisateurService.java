@@ -1,6 +1,5 @@
 package com.cda.api.service;
 
-import com.cda.api.dto.UtilisateurDto;
 import com.cda.api.model.Utilisateur;
 
 public interface IUtilisateurService {

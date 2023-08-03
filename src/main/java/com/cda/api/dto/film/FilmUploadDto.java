@@ -1,4 +1,4 @@
-package com.cda.api.dto;
+package com.cda.api.dto.film;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.multipart.MultipartFile;
@@ -8,14 +8,10 @@ import java.sql.Timestamp;
 public class FilmUploadDto {
     @JsonProperty("_titre")
     private String titre;
-
     @JsonProperty("_description")
     private String description;
-
-    @JsonProperty("_duree")
-    private Timestamp duree;
     @JsonProperty("_img")
-    private String img;
+    private String imgPath;
 
     private MultipartFile file;
 
@@ -35,20 +31,12 @@ public class FilmUploadDto {
         this.description = description;
     }
 
-    public Timestamp getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Timestamp duree) {
-        this.duree = duree;
-    }
-
     public String getImg() {
-        return img;
+        return imgPath;
     }
 
     public void setImg(String img) {
-        this.img = img;
+        this.imgPath = img;
     }
 
     public MultipartFile getFile() {

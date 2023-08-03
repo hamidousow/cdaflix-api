@@ -1,23 +1,16 @@
-package com.cda.api.service;
+package com.cda.api.service.IMP;
 
-import com.cda.api.dto.FilmDto;
 import com.cda.api.model.Film;
 import com.cda.api.repository.FilmRepository;
+import com.cda.api.service.IFilmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotNull;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class FilmServiceImp implements IFilmService{
+public class FilmServiceImp implements IFilmService {
     @Autowired
     private FilmRepository filmRepository;
 

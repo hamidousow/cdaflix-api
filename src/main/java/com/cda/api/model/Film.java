@@ -15,7 +15,7 @@ import java.util.List;
 public class Film {
 
     @Id
-    @SequenceGenerator(name = "flm_id_seq_gen", sequenceName = "cda.t_film_flm_flm_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "flm_id_seq_gen", sequenceName = "cdaflix.t_film_flm_flm_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flm_id_seq_gen")
     @Column(name = "FLM_ID")
     private Integer id;
@@ -26,29 +26,35 @@ public class Film {
     @Column(name = "FLM_DESCRIPTION")
     private String description;
 
-    @Column(name = "FLM_DUREE")
-    private Timestamp duree;
-
     @Column(name = "FLM_IMG")
-    private String img;
-
-    @Transient
-    private byte[] imgBytes;
-
-    /*@Transient
-    @Value("${images.path}")
-    private String imgPath;*/
+    private String imgPath;
 
     //TODO: à remplacer par une liste d'acteur
     @Column(name = "FLM_ACTORS")
-    private String acteurs;
+    private String actors;
+
+    public Film() {
+    }
+
+    public Film(String titre, String description, String imgPath) {
+        this.titre = titre;
+        this.description = description;
+        this.imgPath = imgPath;
+    }
+
+    public Film(String titre, String description, String imgPath, String actors) {
+        this.titre = titre;
+        this.description = description;
+        this.imgPath = imgPath;
+        this.actors = actors;
+    }
 
     public String getActeurs() {
-        return acteurs;
+        return actors;
     }
 
     public void setActeurs(String acteurs) {
-        this.acteurs = acteurs;
+        this.actors = acteurs;
     }
 
     public Integer getId() {
@@ -68,11 +74,11 @@ public class Film {
     }
 
     public String getImg() {
-        return img;
+        return imgPath;
     }
 
     public void setImg(String img) {
-        this.img = img;
+        this.imgPath = img;
     }
 
     public String getDescription() {
@@ -83,28 +89,12 @@ public class Film {
         this.description = description;
     }
 
-    public Timestamp getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Timestamp duree) {
-        this.duree = duree;
-    }
-
-    public byte[] getImgBytes() {
-        return imgBytes;
-    }
-
-    public void setImgBytes(byte[] imgBytes) {
-        this.imgBytes = imgBytes;
-    }
-
     public String getActors() {
-        return acteurs;
+        return actors;
     }
 
     public void setActors(String actors) {
-        this.acteurs = actors;
+        this.actors = actors;
     }
 
     @Override
@@ -112,9 +102,8 @@ public class Film {
         return "Film {" +
                 "titre ='" + titre + '\'' +
                 ", description ='" + description + '\'' +
-                ", duree ='" + duree + '\'' +
-                ", img ='" + img + '\'' +
-                ", acteurs ='" + acteurs + '\'' +
+                ", img ='" + imgPath + '\'' +
+                ", acteurs ='" + actors + '\'' +
                 '}';
     }
 }

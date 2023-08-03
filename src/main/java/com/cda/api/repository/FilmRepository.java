@@ -11,5 +11,4 @@ import java.util.List;
 public interface FilmRepository extends CrudRepository<Film, Long> {
     Film findFilmById(Integer idFilm);
     void delete(Film film);
-
 }

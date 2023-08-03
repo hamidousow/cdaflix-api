@@ -1,8 +1,8 @@
 package com.cda.api.mapper;
 
 
-import com.cda.api.dto.FilmDeleteDto;
-import com.cda.api.dto.FilmDto;
+import com.cda.api.dto.film.FilmDeleteDto;
+import com.cda.api.dto.film.FilmDto;
 import com.cda.api.model.Film;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

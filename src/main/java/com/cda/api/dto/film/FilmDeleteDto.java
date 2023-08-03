@@ -1,9 +1,9 @@
-package com.cda.api.dto;
+package com.cda.api.dto.film;
 
+import com.cda.api.dto.utilisateur.UtilisateurCoDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.mapstruct.Mapping;
 
 @NoArgsConstructor
 @AllArgsConstructor

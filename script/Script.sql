@@ -8,9 +8,9 @@ CREATE SCHEMA IF NOT EXISTS cdaflix;
 ------------------------------------------------------------
 -- ID SEQUENCE
 ------------------------------------------------------------
-CREATE SEQUENCE cdaflix.UTL_ID_SEQ_GEN increment 1 start 100;
-CREATE SEQUENCE cdaflix.FLM_ID_SEQ_GEN increment 1 start 100;
-CREATE SEQUENCE cdaflix.FAV_ID_SEQ_GEN increment 1 start 100;
+-- CREATE SEQUENCE cdaflix.UTL_ID_SEQ_GEN increment 1 start 100;
+-- CREATE SEQUENCE cdaflix.FLM_ID_SEQ_GEN increment 1 start 100;
+-- CREATE SEQUENCE cdaflix.FAV_ID_SEQ_GEN increment 1 start 100;
 
 ------------------------------------------------------------
 -- TABLES
@@ -37,7 +37,7 @@ CREATE TABLE cdaflix.T_FILM_FLM(
 CREATE TABLE cdaflix.T_FAVORIS_FAV(
 	FAV_ID SERIAL PRIMARY KEY,
 	FAV_ICONE VARCHAR(150),
-	UTL_ID NOT NULL
+	UTL_ID INT NOT NULL
 )
 
 CREATE TABLE cdaflix.T_FILM_FAVORIS_ASSOCIATION_FFA (
@@ -48,9 +48,28 @@ CREATE TABLE cdaflix.T_FILM_FAVORIS_ASSOCIATION_FFA (
 ------------------------------------------------------------
 -- ALTER
 ------------------------------------------------------------
-ALTER SEQUENCE cdaflix.flm_id_seq_gen OWNED BY cdaflix.t_utilisateur_film_association.ID;
-ALTER SEQUENCE cdaflix.UTL_ID_SEQ_GEN OWNED BY cdaflix.T_UTILISATEUR_UTL.UTL_ID;
-ALTER SEQUENCE cdaflix.FLM_ID_SEQ_GEN OWNED BY cdaflix.T_FILM_FLM.FLM_ID;
+-- ALTER SEQUENCE cdaflix.flm_id_seq_gen OWNED BY cdaflix.t_film_flm.flm_ID;
+-- ALTER SEQUENCE cdaflix.UTL_ID_SEQ_GEN OWNED BY cdaflix.T_UTILISATEUR_UTL.UTL_ID;
+-- ALTER SEQUENCE cdaflix.FLM_ID_SEQ_GEN OWNED BY cdaflix.T_FILM_FLM.FLM_ID;
+ALTER TABLE cdaflix.t_film_favoris_association_ffa
+ADD CONSTRAINT fk_flm_id
+FOREIGN KEY (FLM_ID)
+REFERENCES cdaflix.t_film_flm(flm_id)
+
+ALTER TABLE cdaflix.t_film_favoris_association_ffa
+ADD CONSTRAINT fk_fav_id
+FOREIGN KEY (FAV_ID)
+REFERENCES cdaflix.t_favoris_fav(fav_id)
+
+alter table cdaflix.t_film_flm
+drop column FLM_DUREE
+
+alter table cdaflix.t_film_flm
+add column FLM_DUREE timestamp not null
+
+SELECT column_name, data_type FROM information_schema.columns
+WHERE table_name = 't_film_flm' AND column_name = 'flm_duree';
+
 ------------------------------------------------------------
 -- INSERT DATA
 ------------------------------------------------------------

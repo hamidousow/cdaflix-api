@@ -11,7 +11,7 @@ import java.util.List;
 public class Favoris {
 
     @Id
-    @SequenceGenerator(name = "fav_id_seq_gen", sequenceName = "cda.t_favoris_fav_fav_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "fav_id_seq_gen", sequenceName = "cdaflix.t_favoris_fav_fav_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fav_id_seq_gen")
     @Column(name = "FAV_ID")
     private Integer id;

@@ -1,8 +1,7 @@
-package com.cda.api.dto;
+package com.cda.api.dto.utilisateur;
 
-import com.cda.api.model.Film;
+import com.cda.api.dto.film.FilmDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -13,7 +13,7 @@ import java.util.Objects;
 @Component
 public class Utilisateur implements Serializable {
     @Id
-    @SequenceGenerator(name = "utl_id_seq_gen", sequenceName = "cda.t_utilisateur_utl_utl_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "utl_id_seq_gen", sequenceName = "cdaflix.t_utilisateur_utl_utl_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "utl_id_seq_gen")
     @Column(name = "UTL_ID")
     private Integer id;
