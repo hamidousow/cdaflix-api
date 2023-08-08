@@ -56,4 +56,35 @@ public class FilmController {
         }
         return ResponseEntity.ok(allMoviesDto);
     }
+
+    @GetMapping("/findOne")
+    public ResponseEntity<FilmDto> findOne(@RequestParam(name = "_titre") String titre) {
+
+        Film film = filmService.findByTitre(titre);
+        if(film != null) {
+            FilmDto filmDto = filmMapper.filmToFilmDto(film);
+            return new ResponseEntity<>(filmDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+   /* @GetMapping("findAllByTitre")
+    public ResponseEntity<List<FilmDto>> findAllByTitre(@RequestParam(name = "_titre") String titre) {
+        List<Film> films= filmService.findAllByTitre(titre);
+        if(!films.isEmpty()) {
+            List<FilmDto> filmsDto = filmMapper.filmsToFilmsDto(films);
+            return new ResponseEntity<>(filmsDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }*/
+
+    @GetMapping("findAllByTitreIn")
+    public ResponseEntity<List<FilmDto>> findAllByTitreIn(@RequestParam(name = "_titre") String titre) {
+        List<Film> films= filmService.findAllByTitreLikeIgnoreCase(titre);
+        if(!films.isEmpty()) {
+            List<FilmDto> filmsDto = filmMapper.filmsToFilmsDto(films);
+            return new ResponseEntity<>(filmsDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

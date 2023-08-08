@@ -13,4 +13,9 @@ public interface IFilmService {
 
     void delete(Film film);
 
+    Film findByTitre(String titre);
+
+    List<Film> findAllByTitreLikeIgnoreCase(String titre);
+
+    //List<Film> findAllByTitreIn(List<String> titre);
 }

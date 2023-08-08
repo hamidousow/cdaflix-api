@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface FilmMapper {
 
@@ -18,4 +20,5 @@ public interface FilmMapper {
     @Mapping(source = "idFilm", target = "id")
     Film filmDeleteDtoToFilm(FilmDeleteDto filmDeleteDto);
 
+    List<FilmDto> filmsToFilmsDto(List<Film> films);
 }
