@@ -33,10 +33,11 @@ public class FilmController {
     IFileService fileService;
 
     @RequestMapping(value = "/createMovie", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFilm(@RequestParam(name = "_titre") String titre,
-                                             @RequestParam(name = "_description") String description,
-                                             @RequestParam(name = "_actors") String actors,
-                                             @RequestParam(name = "_img") MultipartFile file) {
+    public ResponseEntity<String> uploadFilm(@RequestParam(name = "  titre") String titre,
+                                             @RequestParam(name = "description") String description,
+                                             @RequestParam(name = "actors") String actors,
+                                             @RequestParam(name = "img") MultipartFile file
+                                             ) {
 
         String imgPath = fileService.upload(file);
         FilmDto filmDto = new FilmDto(titre, description, imgPath, actors);
@@ -56,35 +57,44 @@ public class FilmController {
         }
         return ResponseEntity.ok(allMoviesDto);
     }
+    @GetMapping("/findByTitre")
+    public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "_titre") String titre) {
 
-    @GetMapping("/findOne")
-    public ResponseEntity<FilmDto> findOne(@RequestParam(name = "_titre") String titre) {
-
-        Film film = filmService.findByTitre(titre);
-        if(film != null) {
-            FilmDto filmDto = filmMapper.filmToFilmDto(film);
+        List<Film> films = filmService.findByTitreLike(titre);
+        if(films != null) {
+            List<FilmDto> filmDto = filmMapper.filmsToFilmsDto(films);
             return new ResponseEntity<>(filmDto, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-   /* @GetMapping("findAllByTitre")
-    public ResponseEntity<List<FilmDto>> findAllByTitre(@RequestParam(name = "_titre") String titre) {
-        List<Film> films= filmService.findAllByTitre(titre);
-        if(!films.isEmpty()) {
-            List<FilmDto> filmsDto = filmMapper.filmsToFilmsDto(films);
-            return new ResponseEntity<>(filmsDto, HttpStatus.OK);
+    @RequestMapping(value = "/updateMovie", method = RequestMethod.POST)
+    public ResponseEntity<String> updateFilm(@RequestParam("_id") Integer idFilm,
+                                             @RequestParam(name = "_titre") String titre,
+                                             @RequestParam(name = "_description") String description,
+                                             @RequestParam(name = "_actors") String actors,
+                                             @RequestParam(name = "_img") MultipartFile file) {
+        Film film = filmService.findById(idFilm);
+        String imgPath = film.getImg();
+        if(!file.isEmpty()) {
+            imgPath = fileService.upload(file);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
+        FilmDto filmDto = new FilmDto(idFilm, titre, description, imgPath, actors);
+        Film filmUpdated = filmMapper.filmDtoToFilm(filmDto);
+        filmService.save(filmUpdated);
+        return new ResponseEntity<String>( " Modifications enregistrées", HttpStatus.OK);
+    }
 
-    @GetMapping("findAllByTitreIn")
-    public ResponseEntity<List<FilmDto>> findAllByTitreIn(@RequestParam(name = "_titre") String titre) {
-        List<Film> films= filmService.findAllByTitreLikeIgnoreCase(titre);
-        if(!films.isEmpty()) {
-            List<FilmDto> filmsDto = filmMapper.filmsToFilmsDto(films);
-            return new ResponseEntity<>(filmsDto, HttpStatus.OK);
+    @RequestMapping(value = "/deleteMovie", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteFilm(@RequestParam("_id") Integer idFilm) {
+
+        Film filmToDelete = filmService.findById(idFilm);
+        if(filmToDelete != null) {
+            filmService.delete(filmToDelete);
+            return new ResponseEntity<String>("Film supprimé", HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        //todo: rechercher du film, si result == null confirmé la suppression
+        return new ResponseEntity<String>("Id inconnu", HttpStatus.NOT_FOUND);
     }
 }

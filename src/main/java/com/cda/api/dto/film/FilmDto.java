@@ -41,6 +41,14 @@ public class FilmDto {
         this.actors = actors;
     }
 
+    public FilmDto(Integer id, String titre, String description, String imgPath, String actors) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.imgPath = imgPath;
+        this.actors = actors;
+    }
+
     public String getActors() {
         return actors;
     }
@@ -89,15 +97,4 @@ public class FilmDto {
         this.description = description;
     }
 
-
-    @Override
-    public String toString() {
-        return "FilmDto{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", description='" + description + '\'' +
-                ", imgPath='" + imgPath + '\'' +
-                ", actors='" + actors + '\'' +
-                '}';
-    }
 }

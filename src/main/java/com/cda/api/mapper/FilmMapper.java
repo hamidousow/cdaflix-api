@@ -15,10 +15,12 @@ public interface FilmMapper {
 
     Film filmDtoToFilm(FilmDto filmDto);
 
+
     FilmDto filmToFilmDto(Film film);
 
     @Mapping(source = "idFilm", target = "id")
     Film filmDeleteDtoToFilm(FilmDeleteDto filmDeleteDto);
 
     List<FilmDto> filmsToFilmsDto(List<Film> films);
+
 }
