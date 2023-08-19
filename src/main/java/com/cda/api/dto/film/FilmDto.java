@@ -11,18 +11,18 @@ import java.time.Duration;
 
 public class FilmDto {
 
-    @JsonProperty("_id")
+    @JsonProperty("id")
     private Integer id;
 
-    @JsonProperty("_titre")
+    @JsonProperty("titre")
     private String titre;
 
-    @JsonProperty("_description")
+    @JsonProperty("description")
     private String description;
     @JsonProperty("_img")
     private String imgPath;
 
-    @JsonProperty("_actors")
+    @JsonProperty("actors")
     private String actors;
 
     public FilmDto() {

@@ -33,7 +33,7 @@ public class FilmController {
     IFileService fileService;
 
     @RequestMapping(value = "/createMovie", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFilm(@RequestParam(name = "  titre") String titre,
+    public ResponseEntity<String> uploadFilm(@RequestParam(name = "titre") String titre,
                                              @RequestParam(name = "description") String description,
                                              @RequestParam(name = "actors") String actors,
                                              @RequestParam(name = "img") MultipartFile file
@@ -58,7 +58,7 @@ public class FilmController {
         return ResponseEntity.ok(allMoviesDto);
     }
     @GetMapping("/findByTitre")
-    public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "_titre") String titre) {
+    public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "titre") String titre) {
 
         List<Film> films = filmService.findByTitreLike(titre);
         if(films != null) {
@@ -69,11 +69,11 @@ public class FilmController {
     }
 
     @RequestMapping(value = "/updateMovie", method = RequestMethod.POST)
-    public ResponseEntity<String> updateFilm(@RequestParam("_id") Integer idFilm,
-                                             @RequestParam(name = "_titre") String titre,
-                                             @RequestParam(name = "_description") String description,
-                                             @RequestParam(name = "_actors") String actors,
-                                             @RequestParam(name = "_img") MultipartFile file) {
+    public ResponseEntity<String> updateFilm(@RequestParam("id") Integer idFilm,
+                                             @RequestParam(name = "titre") String titre,
+                                             @RequestParam(name = "description") String description,
+                                             @RequestParam(name = "actors") String actors,
+                                             @RequestParam(name = "img") MultipartFile file) {
         Film film = filmService.findById(idFilm);
         String imgPath = film.getImg();
         if(!file.isEmpty()) {
@@ -86,7 +86,7 @@ public class FilmController {
     }
 
     @RequestMapping(value = "/deleteMovie", method = RequestMethod.GET)
-    public ResponseEntity<String> deleteFilm(@RequestParam("_id") Integer idFilm) {
+    public ResponseEntity<String> deleteFilm(@RequestParam("id") Integer idFilm) {
 
         Film filmToDelete = filmService.findById(idFilm);
         if(filmToDelete != null) {

@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FilmDeleteDto {
 
-    @JsonProperty("_utilisateur")
+    @JsonProperty("utilisateur")
     private UtilisateurCoDto utilisateurCoDto;
 
 
-    @JsonProperty("_idFilm")
+    @JsonProperty("idFilm")
     private Integer idFilm;
 
     public UtilisateurCoDto getUtilisateurCoDto() {

@@ -6,11 +6,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.sql.Timestamp;
 
 public class FilmUploadDto {
-    @JsonProperty("_titre")
+    @JsonProperty("titre")
     private String titre;
-    @JsonProperty("_description")
+    @JsonProperty("description")
     private String description;
-    @JsonProperty("_img")
+    @JsonProperty("img")
     private String imgPath;
 
     private MultipartFile file;
