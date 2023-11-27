@@ -12,7 +12,7 @@ public interface FilmRepository extends CrudRepository<Film, Long> {
     Film findFilmById(Integer idFilm);
     void delete(Film film);
 
-    List<Film> findByTitreContainsIgnoreCase(String titre);
+    List<Film> findByTitleContainsIgnoreCase(String title);
 
-    List<Film> findAllByTitreLikeIgnoreCase(String s);
+    List<Film> findAllByTitleLikeIgnoreCase(String s);
 }

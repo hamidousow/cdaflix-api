@@ -1,9 +1,7 @@
 package com.cda.api.dto.film;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import java.sql.Timestamp;
@@ -14,63 +12,33 @@ public class FilmDto {
     @JsonProperty("id")
     private Integer id;
 
-    @JsonProperty("titre")
-    private String titre;
+    @JsonProperty("title")
+    private String title;
 
     @JsonProperty("description")
     private String description;
-    @JsonProperty("_img")
-    private String imgPath;
+
 
     @JsonProperty("actors")
     private String actors;
 
+    @JsonProperty("img")
+    private String img;
+
     public FilmDto() {
     }
 
-    public FilmDto(String titre, String description, String imgPath) {
-        this.titre = titre;
+    public FilmDto(String titre, String description, String actors) {
+        this.title = titre;
         this.description = description;
-        this.imgPath = imgPath;
-    }
-
-    public FilmDto(String titre, String description, String imgPath, String actors) {
-        this.titre = titre;
-        this.description = description;
-        this.imgPath = imgPath;
         this.actors = actors;
     }
 
-    public FilmDto(Integer id, String titre, String description, String imgPath, String actors) {
+    public FilmDto(Integer id, String titre, String description, String actors) {
         this.id = id;
-        this.titre = titre;
+        this.title = titre;
         this.description = description;
-        this.imgPath = imgPath;
         this.actors = actors;
-    }
-
-    public String getActors() {
-        return actors;
-    }
-
-    public void setActors(String actors) {
-        this.actors = actors;
-    }
-
-    public String getImgPath() {
-        return imgPath;
-    }
-
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
-    }
-
-    public void setImg(String img) {
-        this.imgPath = img;
-    }
-
-    public String getImg() {
-        return imgPath;
     }
 
     public Integer getId() {
@@ -81,12 +49,12 @@ public class FilmDto {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -97,4 +65,19 @@ public class FilmDto {
         this.description = description;
     }
 
+    public String getActors() {
+        return actors;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
 }

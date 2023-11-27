@@ -20,32 +20,32 @@ public class Film {
     @Column(name = "FLM_ID")
     private Integer id;
 
-    @Column(name = "FLM_TITRE")
-    private String titre;
+    @Column(name = "FLM_TITLE")
+    private String title;
 
     @Column(name = "FLM_DESCRIPTION")
     private String description;
-
-    @Column(name = "FLM_IMG")
-    private String imgPath;
 
     //TODO: à remplacer par une liste d'acteur
     @Column(name = "FLM_ACTORS")
     private String actors;
 
+    @Column(name= "FLM_IMG")
+    private String img;
+
     public Film() {
     }
 
-    public Film(String titre, String description, String imgPath) {
-        this.titre = titre;
+    public Film(String title, String description, String imgPath) {
+        this.title = title;
         this.description = description;
-        this.imgPath = imgPath;
+        this.img = img;
     }
 
-    public Film(String titre, String description, String imgPath, String actors) {
-        this.titre = titre;
+    public Film(String title, String description, String img, String actors) {
+        this.title = title;
         this.description = description;
-        this.imgPath = imgPath;
+        this.img = img;
         this.actors = actors;
     }
 
@@ -65,20 +65,20 @@ public class Film {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getImg() {
-        return imgPath;
+        return img;
     }
 
     public void setImg(String img) {
-        this.imgPath = img;
+        this.img = img;
     }
 
     public String getDescription() {
@@ -97,12 +97,13 @@ public class Film {
         this.actors = actors;
     }
 
+
     @Override
     public String toString() {
         return "Film {" +
-                "titre ='" + titre + '\'' +
+                "titre ='" + title + '\'' +
                 ", description ='" + description + '\'' +
-                ", img ='" + imgPath + '\'' +
+                ", img ='" + img + '\'' +
                 ", acteurs ='" + actors + '\'' +
                 '}';
     }

@@ -49,12 +49,12 @@ public class FilmServiceImp implements IFilmService {
 
     @Override
     public List<Film> findByTitreLike(String titre) {
-        return filmRepository.findByTitreContainsIgnoreCase(titre);
+        return filmRepository.findByTitleContainsIgnoreCase(titre);
     }
 
     @Override
-    public List<Film> findAllByTitreLikeIgnoreCase(String titre) {
-        return filmRepository.findAllByTitreLikeIgnoreCase("%titre%");
+    public List<Film> findAllByTitreLikeIgnoreCase(String title) {
+        return filmRepository.findAllByTitleLikeIgnoreCase("%title%");
     }
 
 }

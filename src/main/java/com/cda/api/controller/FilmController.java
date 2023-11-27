@@ -33,34 +33,33 @@ public class FilmController {
     IFileService fileService;
 
     @RequestMapping(value = "/createMovie", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFilm(@RequestParam(name = "titre") String titre,
+    public ResponseEntity<String> uploadFilm(@RequestParam(name = "title") String titre,
                                              @RequestParam(name = "description") String description,
                                              @RequestParam(name = "actors") String actors,
                                              @RequestParam(name = "img") MultipartFile file
                                              ) {
 
         String imgPath = fileService.upload(file);
-        FilmDto filmDto = new FilmDto(titre, description, imgPath, actors);
+        FilmDto filmDto = new FilmDto(titre, description, actors);
         Film film = filmMapper.filmDtoToFilm(filmDto);
         filmService.save(film);
-        return new ResponseEntity<String>(filmDto.getTitre() + " a bien été ajouté", HttpStatus.CREATED);
+        return new ResponseEntity<String>(filmDto.getTitle() + " a bien été ajouté", HttpStatus.CREATED);
     }
 
-    @GetMapping("/allMovies")
+    @GetMapping("/all")
     public ResponseEntity<List<FilmDto>> allMovies() {
         List<Film> allMovies = filmService.getAll();
 
         List<FilmDto> allMoviesDto = new ArrayList<>();
         if(allMovies != null) {
             allMoviesDto = allMovies.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
-            System.out.println(allMoviesDto.toString() + "\n");
         }
         return ResponseEntity.ok(allMoviesDto);
     }
-    @GetMapping("/findByTitre")
-    public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "titre") String titre) {
+    @GetMapping("/findByTitle")
+    public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "title") String title) {
 
-        List<Film> films = filmService.findByTitreLike(titre);
+        List<Film> films = filmService.findByTitreLike(title);
         if(films != null) {
             List<FilmDto> filmDto = filmMapper.filmsToFilmsDto(films);
             return new ResponseEntity<>(filmDto, HttpStatus.OK);
@@ -70,7 +69,7 @@ public class FilmController {
 
     @RequestMapping(value = "/updateMovie", method = RequestMethod.POST)
     public ResponseEntity<String> updateFilm(@RequestParam("id") Integer idFilm,
-                                             @RequestParam(name = "titre") String titre,
+                                             @RequestParam(name = "title") String title,
                                              @RequestParam(name = "description") String description,
                                              @RequestParam(name = "actors") String actors,
                                              @RequestParam(name = "img") MultipartFile file) {
@@ -79,7 +78,7 @@ public class FilmController {
         if(!file.isEmpty()) {
             imgPath = fileService.upload(file);
         }
-        FilmDto filmDto = new FilmDto(idFilm, titre, description, imgPath, actors);
+        FilmDto filmDto = new FilmDto(idFilm, title, description, actors);
         Film filmUpdated = filmMapper.filmDtoToFilm(filmDto);
         filmService.save(filmUpdated);
         return new ResponseEntity<String>( " Modifications enregistrées", HttpStatus.OK);
