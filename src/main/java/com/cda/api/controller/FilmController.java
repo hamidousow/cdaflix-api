@@ -32,18 +32,18 @@ public class FilmController {
     @Autowired
     IFileService fileService;
 
-    @RequestMapping(value = "/createMovie", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFilm(@RequestParam(name = "title") String titre,
-                                             @RequestParam(name = "description") String description,
-                                             @RequestParam(name = "actors") String actors,
-                                             @RequestParam(name = "img") MultipartFile file
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<HttpStatus> uploadFilm(@RequestPart(name="title") String titre,
+                                             @RequestPart(name="description") String description,
+                                             @RequestPart(name="actors") String actors,
+                                             @RequestPart(name="img") MultipartFile file
                                              ) {
 
         String imgPath = fileService.upload(file);
         FilmDto filmDto = new FilmDto(titre, description, actors);
         Film film = filmMapper.filmDtoToFilm(filmDto);
         filmService.save(film);
-        return new ResponseEntity<String>(filmDto.getTitle() + " a bien été ajouté", HttpStatus.CREATED);
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
