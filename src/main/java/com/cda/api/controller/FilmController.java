@@ -56,7 +56,7 @@ public class FilmController {
         }
         return ResponseEntity.ok(allMoviesDto);
     }
-    @GetMapping("/findByTitle")
+    @GetMapping("/find")
     public ResponseEntity<List<FilmDto>> findOne(@RequestParam(name = "title") String title) {
 
         List<Film> films = filmService.findByTitreLike(title);
