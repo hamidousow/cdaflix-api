@@ -67,6 +67,14 @@ public class FilmController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping(value = "/findOne")
+    public ResponseEntity<FilmDto> findById(@RequestParam("id") String idStr) {
+        Integer id = Integer.parseInt(idStr);
+        Film filmFind = filmService.findById(id);
+        FilmDto filmFindDto = filmMapper.filmToFilmDto(filmFind);
+        return new ResponseEntity<FilmDto>(filmFindDto, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/updateMovie", method = RequestMethod.POST)
     public ResponseEntity<String> updateFilm(@RequestParam("id") Integer idFilm,
                                              @RequestParam(name = "title") String title,
