@@ -91,22 +91,7 @@ public class FileServiceIMP implements IFileService {
     }
 
     @Override
-    public String getImgUrl(String imgName) {
-        storage = StorageOptions.getUnauthenticatedInstance().getService();
-
-        BlobId blobId = BlobId.of(bucketName, imgName);
-        Blob blob = storage.get(blobId);
-        if(blob != null) {
-            System.out.println(blob.getSelfLink());
-        } else {
-            return "blob est null";
-        }
-
-        return blob.getMediaLink();
-    }
-
-    @Override
-    public List<FilmDto> taGrandMere(List<FilmDto> films) {
+    public List<FilmDto> getImgUrl(List<FilmDto> films) {
 
         storage = StorageOptions.getUnauthenticatedInstance().getService();
 
@@ -119,7 +104,6 @@ public class FileServiceIMP implements IFileService {
                 }
             }
         }
-        films.forEach(f -> System.out.println("image film :  "+f.getImg()));
         return films;
     }
 }

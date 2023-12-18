@@ -14,7 +14,5 @@ public interface IFileService {
 
     public String uploadCloud(MultipartFile file);
 
-    public String getImgUrl(String str);
-
-    List<FilmDto> taGrandMere(List<FilmDto> allMovies);
+    List<FilmDto> getImgUrl(List<FilmDto> allMovies);
 }

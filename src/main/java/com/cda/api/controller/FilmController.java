@@ -57,7 +57,7 @@ public class FilmController {
                     .collect(Collectors.toList());
 
            //allMoviesDto.forEach(film -> film.setImg(fileService.getImgUrl(film.getImg())));
-            fileService.taGrandMere(allMoviesDto);
+            fileService.getImgUrl(allMoviesDto);
         }
 
         //System.out.println(allMoviesDto.toString());
@@ -70,7 +70,7 @@ public class FilmController {
         List<Film> films = filmService.findByTitreLike(title);
         if(films != null) {
             List<FilmDto> filmDto = filmMapper.filmsToFilmsDto(films);
-            fileService.taGrandMere(filmDto);
+            fileService.getImgUrl(filmDto);
             return new ResponseEntity<>(filmDto, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
