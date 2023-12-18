@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cdaflix-408113",
+  "private_key_id": "94e300f4a5b234774ea7b244331650ae84c0efff",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhw+S/NoXkk9vr\nK6mj+pp573eqMCQkeAyL4udHk35Xm1612voo6LePmdspdKy+GU6cpWBSV+BKBlM3\nUbHkL2+Zq1slnvEhs5g99dIuqKjwDO76YN53JmQDUG2LSaXrhr6nIMnE33bu7EKF\nl1IIG3ASNy/Zdk+CgKiYgC7RvR0dPhAAGN47cNg6751mmi2ECGUpR0DtZ7kIrDXr\nirTQ45FN3osFy3lGMbGuhj+SNKM0YXW7U1X65+B3FQUj7wHIBvl/T2ia7pm/J9An\njvvNR7PkkUZ9sIu+WEV9+dFA8TM22Nvo0KaHy2n7YS90M6X4h8keVfZX0hEoY3xO\n6RByEmJFAgMBAAECggEAAtO7J5HSjLw1Qsqh2IXTgrdhnjtKwzzQRhLUppbNkYyb\n26x0TtLV3vHO8W6emHrPUIgu8+5ZxqjcSJMN++Iu2ZPFvmuGcCTu68e07BSnQ5Tw\ni9NutbtArAdJIoy3i9gncbGoFSkJ35AMfTPEjoluwSujvmthhNbWRaKanicUwur1\nVs5/dO1Cr/NHOmFHEovZ1ScatyS1Ob8A+xDPFX0mchf3t95fvxZ/J6VaC+bxfXKw\nRZZ3ePcepZkL4PIbbZu/7q1kIZCAbWMCLeBK0z8xb1xMackWJTKyYqjKQwlBEx/g\n3TNjWb70PU4KpTG3dtgk100KYItWw2+BvSnfV+fFeQKBgQD/bKzLzeHXb+aTOpi3\nRMYqFYCdwT1c7n3vWsA9HY5Pt4DVoM9IsrzqpqvmTRwCsm/AiLcrk0ZY/rgUb4kz\nKOe9kjAnTXefMWXKJ/gJCAQHVUwRNYmttEgHqZ2gTXkcXMWMiwT0T7udg3wiFLf6\n63+XO6CWN8pewmXnkcjZezXZPwKBgQDiRhyMePsOJA2pyNvIp5M3pQ5s0UIpApwP\nbyq09MSJJ2TWgucZCUtRR78zp1xnZ3o3tgTa7tQvR2FDRITid3Mvhfn8YJuVGoP6\nfhc/3CJlQ6faKzF+tFQqsKPbvcIWu9Ts30bYVol14DQXzSxwBeAoE53EsyWmuA0F\nCVxdgaO/ewKBgQCSOBcvUHvhxZhcXiYAfClo/Ag1xuKm6YxEUlJMajgGoIjrQnSH\nLHMDbUhovWm0jYt1z430LwoNdjvQzwzesaMAHcjdJva8th2MPZc7LFCKFiVGkLxx\nKQw2/r1SgCc9ukoIq6i5Z0+C2ztbkzrDNL9ExwimFegOmQCXMRimj2cDJwKBgHqf\nfEE0Hvne1/i2/USUa9ev/01BahVHcMN8fyxpqUiarK8DabHLs6FsvFWF0THIhhdC\n8QakfyDQEgmeTFVeXnHWrU70G9yF7hgF1RuqdIlkTMaSudPsbeBksagYAeLID+/+\nYCpFW2EiC5kKe5aJ2JxfZRR/8VuUSpn8JK4X32GZAoGBAOCDO/JX3Zp9Grj4H04P\n69I6Dn0ubdOr+JWxT7DA6ZbzWLESvzBuxZ+UWurHCBadaF1LFqdO6eesV7YdvepE\n35TvmruA+s3SHNInVgTmFHBo9e+6gSFquyKM668WtamtlNkTLC47o141inzhfpD+\n3rL6t2FDif703s286PRbEb+g\n-----END PRIVATE KEY-----\n",
+  "client_email": "cdaflix-service@cdaflix-408113.iam.gserviceaccount.com",
+  "client_id": "108040185785236998862",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cdaflix-service%40cdaflix-408113.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

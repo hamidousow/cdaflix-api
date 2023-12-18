@@ -39,8 +39,8 @@ public class FilmController {
                                              @RequestPart(name="img") MultipartFile file
                                              ) {
 
-        String imgPath = fileService.upload(file);
-        FilmDto filmDto = new FilmDto(titre, description, actors);
+        String imgName = fileService.uploadCloud(file);
+        FilmDto filmDto = new FilmDto(titre, description, actors, imgName);
         Film film = filmMapper.filmDtoToFilm(filmDto);
         filmService.save(film);
         return ResponseEntity.ok(HttpStatus.CREATED);
@@ -49,11 +49,19 @@ public class FilmController {
     @GetMapping("/all")
     public ResponseEntity<List<FilmDto>> allMovies() {
         List<Film> allMovies = filmService.getAll();
-
         List<FilmDto> allMoviesDto = new ArrayList<>();
+
         if(allMovies != null) {
-            allMoviesDto = allMovies.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
+            allMoviesDto = allMovies.stream()
+                    .map(film -> filmMapper.filmToFilmDto(film))
+                    .collect(Collectors.toList());
+
+           //allMoviesDto.forEach(film -> film.setImg(fileService.getImgUrl(film.getImg())));
+            fileService.taGrandMere(allMoviesDto);
         }
+
+        //System.out.println(allMoviesDto.toString());
+
         return ResponseEntity.ok(allMoviesDto);
     }
     @GetMapping("/find")
@@ -62,6 +70,7 @@ public class FilmController {
         List<Film> films = filmService.findByTitreLike(title);
         if(films != null) {
             List<FilmDto> filmDto = filmMapper.filmsToFilmsDto(films);
+            fileService.taGrandMere(filmDto);
             return new ResponseEntity<>(filmDto, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

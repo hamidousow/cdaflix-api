@@ -28,10 +28,11 @@ public class FilmDto {
     public FilmDto() {
     }
 
-    public FilmDto(String titre, String description, String actors) {
+    public FilmDto(String titre, String description, String actors, String imgName) {
         this.title = titre;
         this.description = description;
         this.actors = actors;
+        this.img = imgName;
     }
 
     public FilmDto(Integer id, String titre, String description, String actors) {

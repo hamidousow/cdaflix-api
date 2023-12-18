@@ -15,7 +15,6 @@ public interface FilmMapper {
 
     Film filmDtoToFilm(FilmDto filmDto);
 
-
     FilmDto filmToFilmDto(Film film);
 
     @Mapping(source = "idFilm", target = "id")
