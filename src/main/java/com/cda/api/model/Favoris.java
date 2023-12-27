@@ -21,12 +21,12 @@ public class Favoris {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "utl_id")
-    private Utilisateur user;
+    private User user;
 
     public Favoris() {
     }
 
-    public Favoris(Integer id, String icone, Utilisateur user) {
+    public Favoris(Integer id, String icone, User user) {
         this.id = id;
         this.icone = icone;
         this.user = user;
@@ -40,7 +40,7 @@ public class Favoris {
         return icone;
     }
 
-    public Utilisateur getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -52,7 +52,7 @@ public class Favoris {
         this.icone = icone;
     }
 
-    public void setUser(Utilisateur user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

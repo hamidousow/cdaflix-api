@@ -1,21 +1,11 @@
 package com.cda.api.controller;
 
-import com.cda.api.dto.film.FilmDeleteDto;
-import com.cda.api.dto.film.FilmUploadDto;
-import com.cda.api.dto.utilisateur.UtilisateurCoDto;
-import com.cda.api.dto.utilisateur.UtilisateurDto;
 import com.cda.api.mapper.FilmMapper;
-import com.cda.api.mapper.UtilisateurMapper;
-import com.cda.api.model.Film;
-import com.cda.api.model.Utilisateur;
 import com.cda.api.service.IFilmService;
-import com.cda.api.service.IUtilisateurService;
+import com.cda.api.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * WebService REST pour les opérations de l'application Admin
@@ -29,12 +19,10 @@ public class Api {
      * injection d'UtilisateurService
      */
     @Autowired
-    private IUtilisateurService utilisateurService;
+    private IUserService utilisateurService;
     /**
      * injection d'UtilisateurMapper
      */
-    @Autowired
-    private UtilisateurMapper utilisateurMapper;
 
     @Autowired
     private IFilmService filmService;
@@ -60,7 +48,7 @@ public class Api {
 
     }*/
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<UtilisateurCoDto> login(@RequestBody @NonNull final UtilisateurDto pUtilisateurDto) {
         Boolean isLoginOk = false;
@@ -72,7 +60,7 @@ public class Api {
         System.out.println(utilisateurDto.getFilmsFavoris().toString());
         //return new ResponseEntity(isLoginOk, HttpStatus.OK);
         return ResponseEntity.ok(utilisateurDto);
-    }
+    }*/
 
 
     /*
@@ -110,26 +98,4 @@ public class Api {
         return ResponseEntity.ok(listFilmsDto);
     }*/
 
-    //TODO : corriger le delete pour un user
-    @PostMapping("/deleteOneMovie")
-    public ResponseEntity<UtilisateurCoDto> deleteOne(@RequestBody FilmDeleteDto filmDeleteDto, MultipartFile file) {
-        System.out.println(filmDeleteDto.toString());
-        /*Integer idUser = filmDeleteDto.getUtilisateurCoDto().getId();
-        Utilisateur user = utilisateurService.findById(idUser);*/
-        /*Film filmFind = filmService.findById(filmDeleteDto.getIdFilm());
-        List<Film> filmsDto = utilisateurService.findById(idUser).getFilmsFavoris();
-        filmsDto.remove(filmFind);*/
-        /*filmService.delete(filmService.findById(filmDeleteDto.getIdFilm()));
-        utilisateurService.save(user);*/
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping(value = "/uploadFilm", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Film> postFilm(@RequestBody FilmUploadDto filmDto) {
-        MultipartFile file = filmDto.getFile();
-        //Film film = filmMapper.filmDtoToFilm(filmDto);
-        //System.out.println(film.toString());
-        //filmService.save(film);
-        return null;
-    }
 }

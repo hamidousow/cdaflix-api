@@ -1,13 +1,13 @@
 package com.cda.api.helper;
 
-import com.cda.api.model.Utilisateur;
+import com.cda.api.model.User;
 
 public class Initializer {
 
-    public static Utilisateur initCreateUser() {
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setEmail("test@test.com");
-        utilisateur.setMotDePasse("test");
+    public static User initCreateUser() {
+        User utilisateur = new User();
+        utilisateur.setMail("test@test.com");
+        utilisateur.setPassword("test");
         return utilisateur;
     }
 

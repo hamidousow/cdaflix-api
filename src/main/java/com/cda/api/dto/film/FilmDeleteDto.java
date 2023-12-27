@@ -1,6 +1,6 @@
 package com.cda.api.dto.film;
 
-import com.cda.api.dto.utilisateur.UtilisateurCoDto;
+import com.cda.api.dto.user.UserDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -10,17 +10,17 @@ import lombok.NoArgsConstructor;
 public class FilmDeleteDto {
 
     @JsonProperty("utilisateur")
-    private UtilisateurCoDto utilisateurCoDto;
+    private UserDto utilisateurCoDto;
 
 
     @JsonProperty("idFilm")
     private Integer idFilm;
 
-    public UtilisateurCoDto getUtilisateurCoDto() {
+    public UserDto getUtilisateurCoDto() {
         return utilisateurCoDto;
     }
 
-    public void setUtilisateurCoDto(UtilisateurCoDto utilisateurCoDto) {
+    public void setUtilisateurCoDto(UserDto utilisateurCoDto) {
         this.utilisateurCoDto = utilisateurCoDto;
     }
 
