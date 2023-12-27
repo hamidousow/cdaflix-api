@@ -21,14 +21,45 @@ public class UserDto {
     @JsonProperty("password")
     private String password;
 
-
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "mail='" + mail + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

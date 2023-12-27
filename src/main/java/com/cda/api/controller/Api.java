@@ -35,18 +35,7 @@ public class Api {
         return ResponseEntity.ok("Bienvenue dans l'api cda");
     }
 
-    /*@RequestMapping(value = "/suscribe", method = RequestMethod.POST)
-    public ResponseEntity<UtilisateurDto> suscribe(@RequestBody @NonNull UtilisateurDto pUtilisateurDto) {
 
-        Utilisateur utilisateur = utilisateurMapper.utilisateurDtoToUtilisateur(pUtilisateurDto);
-        utilisateurService.save(utilisateur);
-        pUtilisateurDto = utilisateurService.findById(utilisateur.getId());
-        if(pUtilisateurDto == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(pUtilisateurDto);
-
-    }*/
 
     /*@RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
