@@ -36,22 +36,6 @@ public class Api {
     }
 
 
-
-    /*@RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity<UtilisateurCoDto> login(@RequestBody @NonNull final UtilisateurDto pUtilisateurDto) {
-        Boolean isLoginOk = false;
-        Utilisateur utilisateurResult = utilisateurService.login(pUtilisateurDto.getEmail(), pUtilisateurDto.getMotDePasse());
-        //
-        System.out.println(utilisateurResult.toString());
-        //
-        UtilisateurCoDto utilisateurDto = utilisateurMapper.utilisateurToUtilisateurCoDto(utilisateurResult);
-        System.out.println(utilisateurDto.getFilmsFavoris().toString());
-        //return new ResponseEntity(isLoginOk, HttpStatus.OK);
-        return ResponseEntity.ok(utilisateurDto);
-    }*/
-
-
     /*
     @PostMapping("/getAllMovies")
     public ResponseEntity<List<FilmDto>> getAllMovies(@RequestBody @NotNull UtilisateurDto pUtilisateurDto) {

@@ -22,16 +22,16 @@ public class ClientController {
     @Autowired
     UserMapper userMapper;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/signin", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> login(@RequestBody @NonNull final UserDto userDto) {
+    public ResponseEntity<UserDto> login(@RequestBody @NonNull final UserDto userDto) {
         Boolean isLoginOk = false;
         User userResult = userService.login(userDto.getMail(), userDto.getPassword());
-        System.out.println(userResult.toString());
+        if(userResult == null) {
+            return ResponseEntity.notFound().build();
+        }
         UserDto userCo = userMapper.userToUserDto(userResult);
-
-        //return new ResponseEntity(isLoginOk, HttpStatus.OK);
-        return new ResponseEntity("Bienvenue", HttpStatus.OK);
+        return ResponseEntity.ok(userCo);
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
