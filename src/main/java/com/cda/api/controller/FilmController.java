@@ -113,4 +113,27 @@ public class FilmController {
         //todo: rechercher du film, si result == null confirmé la suppression
         return new ResponseEntity<String>("Id inconnu", HttpStatus.NOT_FOUND);
     }
+
+    /*@GetMapping("/getMoviesByUser")
+    public ResponseEntity<List<FilmDto>> getMoviesByUser(@RequestParam(name = "idUser") Integer idUser) {
+        System.out.println(idUser);
+        Utilisateur utilisateur = utilisateurService.findById(idUser);
+        List<FilmDto>listFilmsDto = new ArrayList<>();
+
+        if(utilisateur==null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<Film> films = utilisateur.getFilmsFavoris();
+        if(films != null) {
+            for(Film film: films) {
+                film.setImgBytes(
+                        imageToByte(imagesDir + film.getImg())
+                );
+            }
+            listFilmsDto = films.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
+        }
+
+        return ResponseEntity.ok(listFilmsDto);
+    }*/
 }

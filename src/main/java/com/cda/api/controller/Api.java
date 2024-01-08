@@ -32,43 +32,7 @@ public class Api {
 
     @GetMapping("/home")
     public ResponseEntity<String> home() {
-        return ResponseEntity.ok("Bienvenue dans l'api cda");
-    }
-
-
-    /*
-    @PostMapping("/getAllMovies")
-    public ResponseEntity<List<FilmDto>> getAllMovies(@RequestBody @NotNull UtilisateurDto pUtilisateurDto) {
-        Utilisateur utilisateur = utilisateurService.login(pUtilisateurDto.getEmail(), pUtilisateurDto.getMotDePasse());
-        if(utilisateur==null) {
-           return ResponseEntity.notFound().build();
-        }
-        List<Film> films = utilisateur.getFilmsFavoris();
-        List<FilmDto> listFilmsDto = films.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
-        return ResponseEntity.ok(listFilmsDto);
-    }*/
-
-    /*@GetMapping("/getMoviesByUser")
-    public ResponseEntity<List<FilmDto>> getMoviesByUser(@RequestParam(name = "idUser") Integer idUser) {
-        System.out.println(idUser);
-        Utilisateur utilisateur = utilisateurService.findById(idUser);
-        List<FilmDto>listFilmsDto = new ArrayList<>();
-
-        if(utilisateur==null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        List<Film> films = utilisateur.getFilmsFavoris();
-        if(films != null) {
-            for(Film film: films) {
-                film.setImgBytes(
-                        imageToByte(imagesDir + film.getImg())
-                );
-            }
-            listFilmsDto = films.stream().map(film -> filmMapper.filmToFilmDto(film)).collect(Collectors.toList());
-        }
-
-        return ResponseEntity.ok(listFilmsDto);
-    }*/
+        return ResponseEntity.ok("Bienvenue sur Cdaflix");
+    }  
 
 }
